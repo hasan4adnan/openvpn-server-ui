@@ -1,4 +1,5 @@
-*.ovpn
 *.pem
+*.ovpn
+*.key
+*.crt
 __pycache__/
-
