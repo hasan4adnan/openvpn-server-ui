@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VPN Control Panel</title>
+  <style>
+    body {
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .buttons button {
+      padding: 12px 24px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #2e7d32;
+      color: white;
+      transition: background-color 0.2s ease;
+    }
+
+    .buttons button:hover {
+      background-color: #1b5e20;
+    }
+
+    pre {
+      background: #eee;
+      padding: 15px;
+      text-align: left;
+      border-radius: 8px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #323232;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      opacity: 0.95;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔐 VPN Server Control Panel</h1>
+    
+    <div class="buttons">
+      <button onclick="sendAction('start')">Start VPN</button>
+      <button onclick="sendAction('stop')">Stop VPN</button>
+      <button onclick="sendAction('status')">Check Status</button>
+    </div>
+
+    <pre id="output">Status will appear here...</pre>
+
+    <div id="toast" class="toast hidden">Success!</div>
+  </div>
+
+  <script>
+    function sendAction(action) {
+      fetch(`/${action}`, {
+        method: action === 'status' ? 'GET' : 'POST'
+      })
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('output').textContent = data;
+        showToast(`${action.toUpperCase()} action sent`);
+      });
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 3000);
+    }
+  </script>
+</body>
+</html>
