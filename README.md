@@ -2,6 +2,7 @@
 Web UI<img width="1248" alt="Ekran Resmi 2025-06-10 18 34 16" src="https://github.com/user-attachments/assets/f5566cd1-1de8-460f-90ec-70202c19469f" />
 
 <img width="1721" alt="Ekran Resmi 2025-06-10 18 53 52" src="https://github.com/user-attachments/assets/9d5ef9b8-fdff-495f-bd5b-acb023dafa12" />
+<img width="575" alt="Ekran Resmi 2025-06-10 18 28 29" src="https://github.com/user-attachments/assets/3e237f26-b499-478c-aba5-9ef1ac26747f" />
 
 A lightweight web interface to manage an OpenVPN server hosted on an AWS EC2 instance.
 
